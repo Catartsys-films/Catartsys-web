@@ -12,7 +12,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#hero">
+            <a class="navbar-brand" href="#servicios">
                 <img src="img/Catartsys-logo.png" alt="Catartsys Producciones" height="50">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,14 +21,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#hero">Inicio</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="#servicios">Servicios</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#trabajos">Trabajos</a>
-                        
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#equipo">Equipo</a>
@@ -40,19 +36,24 @@
             </div>
         </div>
     </nav>
-
-    <!-- Hero Section -->
-    <section id="hero" class="hero-section">
-        <div id="hero-video-container" class="w-100">
-            <!-- Vimeo video will be embedded here via JavaScript -->
+<!-- Hero Section -->
+<section id="hero" class="hero-section">
+    <div class="hero-video-container">
+        <div class="video-wrapper">
+            <iframe src="https://player.vimeo.com/video/530017940?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1" 
+                    frameborder="0" 
+                    allow="autoplay; fullscreen" 
+                    class="hero-video"
+                    id="hero-video">
+            </iframe>
         </div>
-        <button id="sound-toggle" class="btn btn-light position-absolute">
+        <button id="toggleAudio" class="audio-toggle">
             <i class="bi bi-volume-mute-fill"></i>
         </button>
-    </section>
-
+    </div>
+</section>
      <!-- Services Section -->
-     <section id="servicios" class="services-section py-5">
+     <section id="servicios" class="services-section">
         <div class="container">
             <h2 class="text-center mb-5">Nuestros Servicios</h2>
             <div class="row g-4">
@@ -144,7 +145,7 @@
                 <div class="col-lg-4">
                     <div class="team-member">
                         <div class="member-image">
-                            <img src="img/Alberto-Peralta.jpg" alt="Alberto Peralta" class="img-fluid">
+                            <img src="img/alberto-peralta.jpg" alt="Alberto Peralta" class="img-fluid">
                             <div class="overlay">
                                 <a href="https://www.linkedin.com/" target="_blank" class="linkedin-icon">
                                     <i class="bi bi-linkedin"></i>
@@ -158,7 +159,7 @@
                 <div class="col-lg-4">
                     <div class="team-member">
                         <div class="member-image">
-                            <img src="img/Jonay-Rodriguez.jpg" alt="Jonay Rodriguez" class="img-fluid">
+                            <img src="img/jonay-rodriguez.jpg" alt="Jonay Rodriguez" class="img-fluid">
                             <div class="overlay">
                                 <a href="https://www.linkedin.com/" target="_blank" class="linkedin-icon">
                                     <i class="bi bi-linkedin"></i>
@@ -223,6 +224,37 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://player.vimeo.com/api/player.js"></script>
-    <script src="script.js"></script>
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Video audio control
+        document.addEventListener('DOMContentLoaded', function() {
+            const player = new Vimeo.Player('hero-video');
+            const toggleButton = document.getElementById('toggleAudio');
+            const icon = toggleButton.querySelector('i');
+            let isMuted = true;
+
+            toggleButton.addEventListener('click', function() {
+                if (isMuted) {
+                    player.setVolume(1);
+                    icon.classList.remove('bi-volume-mute-fill');
+                    icon.classList.add('bi-volume-up-fill');
+                } else {
+                    player.setVolume(0);
+                    icon.classList.remove('bi-volume-up-fill');
+                    icon.classList.add('bi-volume-mute-fill');
+                }
+                isMuted = !isMuted;
+            });
+        });
+    </script>
 </body>
 </html>
