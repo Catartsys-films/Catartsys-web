@@ -1,0 +1,17 @@
+# Mi Página Web Estática
+
+Este es un sitio web estático simple creado con **HTML**, **CSS**, y **JavaScript**. La página muestra un diseño básico y está pensada para ser un ejemplo o una plantilla personalizable.
+
+## Tecnologías utilizadas
+
+- **HTML**: Lenguaje de marcado para estructurar el contenido web.
+- **CSS**: Hojas de estilo para diseñar y darle formato a la página.
+- **JavaScript**: Lenguaje de programación utilizado para funcionalidades interactivas (si se utiliza).
+
+## Cómo usar
+
+1. **Clonar el repositorio**:
+   Si deseas obtener una copia local del proyecto, puedes clonar el repositorio con el siguiente comando:
+
+   ```bash
+   git clone https://github.com/TU-USER/TU-REPOSITORIO.git
